@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web RPN Calculator</title>
+    <script type="text/javascript"  src="src/rpn-calculator.js"></script>
+    <style>
+
+        #outputText {
+            display: inline-block;
+            width: 220px;
+            height: 200px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.14);
+            overflow-y: auto;
+        }
+
+        #inputText {
+            width: 160px;
+            border: 1px solid #bbb;
+            padding: 5px;
+            box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.25);
+        }
+
+        h3{
+            width: 240px;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div style="width: 240px">
+        <h3>RPN Calculator</h3>
+        <div id="outputText"></div>
+        <p>Enter a number, an operator or their space separated sequence:</p>
+        <input id="inputText" type="text"/>
+        <button id="submitBtn" onclick="handleSubmitLineClick()" style="height: 27px;">Submit</button>
+        <button onclick="handleResetClick()" style="width: 172px; height: 27px; margin-top: 10px;">Reset</button>
+    </div>
+    <script type="text/javascript">
+        calculator = new RPNCalculator();
+        function handleSubmitLineClick(){
+            var value = document.getElementById('inputText').value;
+            document.getElementById('inputText').value = '';
+            var outputText = document.getElementById('outputText');
+            outputText.innerHTML += '>' + value + '</br>' + calculator.submitExpression(value) + '</br>';
+            outputText.scrollTo(0,outputText.scrollHeight);
+        }
+        function handleResetClick(){
+            document.getElementById('outputText').innerHTML = '';
+            document.getElementById('inputText').innerHTML = '';
+            calculator.reset();
+        }
+        //Enter key is allowed
+        document.getElementById("inputText").addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("submitBtn").click();
+            }
+        });
+    </script>
+</body>
+</html>
