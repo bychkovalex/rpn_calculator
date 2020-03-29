@@ -28,7 +28,7 @@ See example of the usage in index.html.
 =======================
 Development notes
 
-I used a pure JS for this task. Thus I developed the calculator as a JS function. I did it for a few reasons. First, it is really enough for this simple project. Second, the simple code will be easier to use or integrate into more complex project which will use whatever JS framework or/and libraries.
+I used a pure JS (ES5) for this task. Thus I developed the calculator as a JS function. It is really enough for this simple project.
 I provided 2 methods (submitExpression and reset) for the usage, everything else is private.
 I used an recursion inside the function as it is always fun to do.
 It would be fun to have functionality for clear and memory. This could be pretty easily added.
